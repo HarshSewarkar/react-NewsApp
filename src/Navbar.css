@@ -1,0 +1,69 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #333;
+  font-family: "Gilroy";
+  border-radius: 15px;
+  color: white;
+}
+
+.logo {
+  font-size: 1.5rem;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none; /* Initially hide menu icon */
+}
+
+.nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+}
+
+.nav-link {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.nav-link.active {
+  background-color: #555;
+  border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block; /* Show menu icon on mobile */
+  }
+  .nav-links {
+    display: none; /* Initially hide nav links on mobile */
+  }
+  .nav-links.active {
+    display: flex; /* Show nav links when menu is open on mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 4rem;
+    border-radius: 10px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    transition: all 0.3s ease-in;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-links.active {
+    opacity: 1;
+    pointer-events: all;
+  }
+  .nav-link {
+    text-align: center;
+  }
+}
