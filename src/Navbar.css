@@ -1,13 +1,32 @@
+
 .navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   background-color: #333;
-  font-family: "Gilroy";
+  font-family: "Gilroy", sans-serif;
   border-radius: 15px;
   color: white;
+  transition: top 0.3s; 
 }
+
+.navbar.fixed {
+  top: 0vh; 
+  background-color: rgba(0, 0, 0, 0.495);
+}
+
+.container {
+  max-width: 800px;
+  margin: 7vh auto 0 auto; 
+  /* padding: 20px; */
+  font-family: Arial, sans-serif;
+}
+
 
 .logo {
   font-size: 1.5rem;
@@ -19,6 +38,7 @@
   color: white;
   font-size: 1.2rem;
   cursor: pointer;
+  margin-right: 10px;
   display: none; /* Initially hide menu icon */
 }
 
@@ -32,8 +52,12 @@
 .nav-link {
   padding: 0.5rem 1rem;
   cursor: pointer;
+  text-decoration: none; /* Remove default underline */
+  color: white; /* Set text color */
 }
-
+.nav-link:hover{
+text-decoration: none;
+}
 .nav-link.active {
   background-color: #555;
   border-radius: 10px;
@@ -45,25 +69,23 @@
   }
   .nav-links {
     display: none; /* Initially hide nav links on mobile */
-  }
-  .nav-links.active {
-    display: flex; /* Show nav links when menu is open on mobile */
-    flex-direction: column;
+    flex-direction: column; /* Align links vertically on mobile */
     position: absolute;
     top: 4rem;
-    border-radius: 10px;
     left: 0;
     width: 100%;
     background-color: #333;
-    transition: all 0.3s ease-in;
-    opacity: 0;
-    pointer-events: none;
+    border-radius: 10px;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow */
   }
   .nav-links.active {
+    display: flex; /* Show nav links when menu is open on mobile */
     opacity: 1;
     pointer-events: all;
   }
   .nav-link {
     text-align: center;
+    margin: 0.5rem 0; /* Add margin between links */
   }
 }

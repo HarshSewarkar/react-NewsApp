@@ -13,8 +13,9 @@ const App = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=13f476edcde444df9c7b7ef35b807558`
+          `https://newsapi.org/v2/everything?q=${category}&apiKey=b82ac7a4d3444a27afd252c1701d9de1`
         );
+        // console.log(response.data)
         setData(response.data.articles);
       } catch (error) {
         setError("Error fetching data. Please try again later.");
@@ -35,7 +36,9 @@ const App = () => {
     <div>
       <Navbar handleCategoryChange={handleCategoryChange} />
       <div className="container">
-        <h1>Latest News - {category.charAt(0).toUpperCase() + category.slice(1)}</h1>
+        <h1>
+          Latest News - {category.charAt(0).toUpperCase() + category.slice(1)}
+        </h1>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
