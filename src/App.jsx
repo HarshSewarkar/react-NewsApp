@@ -7,7 +7,7 @@ const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [category, setCategory] = useState("social"); // Default category
+  const [category, setCategory] = useState("politics"); // Default category
 
   useEffect(() => {
     const fetchData = async () => {
