@@ -2,20 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 import Navbar from "./Navbar";
+// import AuthComponent from "./AuthComponent";
 
 const App = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [category, setCategory] = useState("politics"); // Default category
+  const [category, setCategory] = useState("general");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${category}&apiKey=b82ac7a4d3444a27afd252c1701d9de1`
+          `https://newsapi.org/v2/top-headlines?country=in&category=${category}&apiKey=b82ac7a4d3444a27afd252c1701d9de1`
         );
-        // console.log(response.data)
         setData(response.data.articles);
       } catch (error) {
         setError("Error fetching data. Please try again later.");
@@ -27,7 +27,6 @@ const App = () => {
     fetchData();
   }, [category]); // Fetch data whenever category changes
 
-  // Function to handle category change
   const handleCategoryChange = (newCategory) => {
     setCategory(newCategory);
   };
@@ -35,10 +34,9 @@ const App = () => {
   return (
     <div>
       <Navbar handleCategoryChange={handleCategoryChange} />
+      {/* <AuthComponent /> */}
       <div className="container">
-        <h1>
-          Latest News - {category.charAt(0).toUpperCase() + category.slice(1)}
-        </h1>
+        <h1>Top Headlines in India - {category}</h1>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
